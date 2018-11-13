@@ -3,11 +3,20 @@ let dom = {
     loadBoards: function () {
         // retrieves boards and makes showBoards called
         dataHandler.getBoards(this.showBoards);
+        dataHandler.createNewCard('hurray',1, 2, console.log);
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
         // it adds necessary event listeners also
-        console.log(boards)
+        let boardsContainer = document.getElementById('boards');
+        for (let i = 0; i < boards.length; i++) {
+            if (boards[i].is_active) {
+                let boardDiv = document.createElement('div');
+                boardDiv.id = 'board' + boards[i].id;
+                boardDiv.innerHTML = boards[i].title;
+                boardsContainer.appendChild(boardDiv);
+            }
+        }
     },
     loadCards: function (boardId) {
         // retrieves cards and makes showCards called

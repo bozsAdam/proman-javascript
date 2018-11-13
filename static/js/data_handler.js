@@ -15,6 +15,7 @@ let dataHandler = {
     _saveData: function () {
         // it is not called from outside
         // saves the data from this._data to local storage
+        localStorage.setItem('proman-data', JSON.stringify(this._data));
     },
     init: function () {
         this._loadData();
@@ -26,24 +27,74 @@ let dataHandler = {
     },
     getBoard: function (boardId, callback) {
         // the board is retrieved and then the callback function is called with the board
+        let board;
+        for (let i = 0; i < this._data.boards.length; i++) {
+            if (this._data.boards[i].id === boardId) {
+                board = this._data.boards[i];
+            }
+        }
+        callback(board);
     },
     getStatuses: function (callback) {
         // the statuses are retrieved and then the callback function is called with the statuses
+        let statuses = this._data.statuses;
+        callback(statuses);
     },
     getStatus: function (statusId, callback) {
         // the status is retrieved and then the callback function is called with the status
+        let status;
+        for (let i = 0; i < this._data.statuses.length; i++) {
+            if (this._data.statuses[i].id === statusId) {
+                status = this._data.statuses[i];
+            }
+        }
+        callback(status);
     },
     getCardsByBoardId: function (boardId, callback) {
         // the cards are retrieved and then the callback function is called with the cards
+        let cards = [];
+        for (let i = 0; i < this._data.cards.length; i++) {
+            if (this._data.cards[i].board_id === boardId) {
+                cards.push(this._data.cards[i]);
+            }
+        }
+        cards.sort((a,b)=>{return a.order - b.order});
+        callback(cards);
     },
     getCard: function (cardId, callback) {
         // the card is retrieved and then the callback function is called with the card
+        let card;
+        for (let i = 0; i < this._data.cards.length; i++) {
+            if (this._data.cards[i].id === cardId) {
+                card = this._data.cards[i];
+            }
+        }
+        callback(card);
     },
     createNewBoard: function (boardTitle, callback) {
         // creates new board, saves it and calls the callback function with its data
+        let newBoard = {
+            "id": Math.max(...this._data.boards.map(x => x.id)) + 1,
+            "title": boardTitle,
+            "is_active": true
+        };
+        this._data.boards.push(newBoard);
+        this._saveData();
+        callback(this._data.boards);
     },
     createNewCard: function (cardTitle, boardId, statusId, callback) {
         // creates new card, saves it and calls the callback function with its data
-    }
-    // here comes more features
+        let newCard = {
+            "id": Math.max(...this._data.cards.map(x => x.id)) + 1,
+            "title": cardTitle,
+            "board_id": boardId,
+            "status_id": statusId,
+            "order": Math.max(...this._data.cards.map(x => x.order)) + 1,
+        };
+        this._data.cards.push(newCard);
+        this._saveData();
+        callback(this._data.cards);
+    },
+        // here comes more features
+
 };
