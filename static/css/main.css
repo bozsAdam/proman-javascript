@@ -1,3 +1,15 @@
 #boards {
     background-color: green;
 }
+
+.board {
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.status {
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: 1px solid black;
+}

@@ -13,8 +13,7 @@ let dom = {
             if (boards[i].is_active) {
                 let boardDiv = document.createElement('div');
                 boardDiv.id = 'board' + boards[i].id;
-                boardDiv.setAttribute('class', 'board');
-                boardDiv.setAttribute('class', 'col-12');
+                boardDiv.setAttribute('class', 'col-12 board');
                 boardDiv.innerHTML = boards[i].title;
                 boardDiv.addEventListener('click', function () {
                    dom.loadCards(boards[i].id)
@@ -32,9 +31,14 @@ let dom = {
         let boardId = 'board' + cards[0].board_id;
         // it adds necessary event listeners also
 
-        let board = document.getElementById(boardId)
-        board.innerHTML = '';
-        let boardContent = document.createElement('div')
+
+        //board.innerHTML = '';
+        let boardContent = document.createElement('div');
+        let board = document.getElementById(boardId);
+        if (document.getElementById('container' + cards[0].board_id)) {
+            document.getElementById('container' + cards[0].board_id).innerHTML = '';
+            console.log('yay');
+        }
         boardContent.id = 'container' + cards[0].board_id;
         boardContent.setAttribute('class', 'row');
         let statuses = ['New','In progress','Testing','Done'];
@@ -43,7 +47,7 @@ let dom = {
             let cardContainer = document.createElement('div');
             cardContainer.id = 'dragme' + cards[0].board_id +'_'+(i+1);
             statusDiv.id = 'board' + cards[0].board_id + '_' +(i+1);
-            statusDiv.setAttribute('class', 'col-lg-3 col-md-6');
+            statusDiv.setAttribute('class', 'col-lg-3 col-md-6 status');
             statusDiv.innerHTML = statuses[i];
             statusDiv.dataset.draggable = 'false';
             boardContent.appendChild(statusDiv);
