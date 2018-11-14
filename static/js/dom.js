@@ -16,8 +16,22 @@ let dom = {
                 boardDiv.id = 'board' + boards[i].id;
                 boardDiv.setAttribute('class', 'col-12 board');
                 boardDiv.innerHTML = boards[i].title;
-                boardDiv.addEventListener('click', function () {
-                   dom.loadCards(boards[i].id)
+                let input = document.createElement('input');
+                let button = document.createElement('input');
+                input.id = 'createCard' + boards[i].id;
+                input.placeholder = 'Create new card';
+                button.id = 'createCardBtn' + boards[i].id;
+                button.type = 'submit';
+                button.setAttribute('class', 'btn btn-info');
+                button.addEventListener('click', function () {
+                    dom.newCardEvent(boards[i].id);
+                });
+                boardDiv.appendChild(input);
+                boardDiv.appendChild(button);
+                boardDiv.addEventListener('click', function (event) {
+                    if(event.target.parentElement.id === 'boards'){
+                        dom.loadCards(boards[i].id);
+                    }
                 });
                 boardsContainer.appendChild(boardDiv);
             }
@@ -95,7 +109,10 @@ let dom = {
             let title = document.getElementById('createBoard').value;
             dataHandler.createNewBoard(title,this.showBoards)
         })
+    },
+    newCardEvent: function(boardId) {
+        let title = document.getElementById('createCard' + boardId).value;
+        dataHandler.createNewCard(title,boardId,1,this.showCards)
     }
-
 }
 ;

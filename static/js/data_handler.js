@@ -93,7 +93,8 @@ let dataHandler = {
         };
         this._data.cards.push(newCard);
         this._saveData();
-        callback(this._data.cards);
+        let cardsForBoard = this._data.cards.filter((card)=>card.board_id === boardId);
+        callback(cardsForBoard,boardId);
     },
         // here comes more features
 
