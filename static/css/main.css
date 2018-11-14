@@ -1,5 +1,12 @@
+body {
+    background-color: #80bdff;
+}
+
+.header {
+    padding: 30px;
+}
+
 #boards {
-    background-color: green;
 }
 
 .board {
@@ -15,5 +22,16 @@
 }
 .draggable{
     min-height: 50%;
-    background-color: rebeccapurple;
+}
+
+.btn {
+    background-color: antiquewhite;
+    color: black;
+    border-color: black;
+    border-radius: 10px;
+    alignment: center;
+}
+
+#createBoard {
+    border-radius: 10px;
 }

@@ -39,7 +39,6 @@ let dom = {
         if (document.getElementById('container' + intBoardId)) {
             boardContent = document.getElementById('container' + intBoardId);
             boardContent.innerHTML = '';
-            console.log('yay');
         }
         else {
             boardContent = document.createElement('div');
