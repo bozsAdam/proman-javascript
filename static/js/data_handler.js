@@ -93,8 +93,28 @@ let dataHandler = {
         };
         this._data.cards.push(newCard);
         this._saveData();
-        callback(this._data.cards);
+        let cardsForBoard = this._data.cards.filter((card)=>card.board_id === boardId);
+        callback(cardsForBoard,boardId);
     },
         // here comes more features
-
+    getCardById: function (cardId) {
+        // the card is retrieved and then the callback function is called with the card
+        let card = this._data.cards.filter(x=>x.id === parseInt(cardId));
+        return(card[0])
+    },
+    addExistingCard: function(existingCard){
+        this._data.cards.push(existingCard);
+        this._saveData();
+    },
+    orderChange: function(cardId,order_id){
+        let card = this._data.cards.filter(x=>x.id === parseInt(cardId));
+        card[0].order = order_id;
+        this._saveData()
+    },
+    deleteCard: function(cardId){
+        let card = this.getCardById(cardId);
+        this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
+        this._saveData();
+        return card
+    }
 };

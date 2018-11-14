@@ -16,8 +16,22 @@ let dom = {
                 boardDiv.id = 'board' + boards[i].id;
                 boardDiv.setAttribute('class', 'col-12 board');
                 boardDiv.innerHTML = boards[i].title;
-                boardDiv.addEventListener('click', function () {
-                   dom.loadCards(boards[i].id)
+                let input = document.createElement('input');
+                let button = document.createElement('input');
+                input.id = 'createCard' + boards[i].id;
+                input.placeholder = 'Create new card';
+                button.id = 'createCardBtn' + boards[i].id;
+                button.type = 'submit';
+                button.setAttribute('class', 'btn btn-info');
+                button.addEventListener('click', function () {
+                    dom.newCardEvent(boards[i].id);
+                });
+                boardDiv.appendChild(input);
+                boardDiv.appendChild(button);
+                boardDiv.addEventListener('click', function (event) {
+                    if(event.target.parentElement.id === 'boards'){
+                        dom.loadCards(boards[i].id);
+                    }
                 });
                 boardsContainer.appendChild(boardDiv);
             }
@@ -51,7 +65,7 @@ let dom = {
             let cardContainer = document.createElement('div');
             cardContainer.id = 'dragme' + intBoardId +'_'+(i+1);
             cardContainer.setAttribute('class','draggable col-12');
-            cardContainer.dataset.status = i;
+            cardContainer.dataset.status = i+1;
             statusDiv.id = 'board' + intBoardId + '_' +(i+1);
             statusDiv.setAttribute('class', 'col-lg-3 col-md-6 status');
             statusDiv.innerHTML = statuses[i];
@@ -65,14 +79,31 @@ let dom = {
             let cardDiv = document.createElement('div');
             cardDiv.innerHTML = cards[i].title;
             cardDiv.dataset.order = cards[i].order;
+            cardDiv.dataset.id = cards[i].id;
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id)
             cardBox.appendChild(cardDiv);
         }
-            dragula([document.getElementById('dragme'+intBoardId+'_'+1),
-        document.getElementById('dragme'+intBoardId+'_'+2),
-        document.getElementById('dragme'+intBoardId+'_'+3),
-        document.getElementById('dragme'+intBoardId+'_'+4)]);
-    },
+        let drake = dragula([document.getElementById('dragme'+intBoardId+'_'+1),
+                    document.getElementById('dragme'+intBoardId+'_'+2),
+                    document.getElementById('dragme'+intBoardId+'_'+3),
+                    document.getElementById('dragme'+intBoardId+'_'+4)]);
+        drake;
+        drake.on('drop',(el,target,source,sibling)=>{
+            let statusId = target.dataset.status;
+            let cardId = el.dataset.id;
+            let cardObject = dataHandler.getCardById(cardId);
+            cardObject.status_id = statusId;
+            dataHandler.deleteCard(cardId);
+            dataHandler.addExistingCard(cardObject);
+            let cardsOfContainer = target.children;
+            for (let i = 0; i <cardsOfContainer.length ; i++) {
+                cardsOfContainer[i].dataset.order = i;
+                dataHandler.orderChange(cardsOfContainer[i].dataset.id,i)
+            }
+            console.log(statusId,cardId,cardObject,cardsOfContainer);
+        }
+            );
+                },
     appendToElement: function (elementToExtend, textToAppend, prepend = false) {
         // function to append new DOM elements (represented by a string) to an existing DOM element
         let fakeDiv = document.createElement('div');
@@ -95,7 +126,10 @@ let dom = {
             let title = document.getElementById('createBoard').value;
             dataHandler.createNewBoard(title,this.showBoards)
         })
+    },
+    newCardEvent: function(boardId) {
+        let title = document.getElementById('createCard' + boardId).value;
+        dataHandler.createNewCard(title,boardId,1,this.showCards)
     }
-
 }
 ;

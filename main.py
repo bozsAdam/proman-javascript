@@ -10,8 +10,10 @@ def boards():
 
 
 def main():
-    app.run(debug=True)
+    app.run(debug=False)
 
 
 if __name__ == '__main__':
+    print('hello')
     main()
+
