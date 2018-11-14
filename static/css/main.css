@@ -1,5 +1,5 @@
 body {
-    background-color: #80bdff;
+    background-color: white;
 }
 
 .header {
@@ -7,16 +7,18 @@ body {
 }
 
 #boards {
+
 }
 
 .board {
     border-radius: 20px;
     border: 2px solid black;
     padding: 20px;
+    background-color: #005cbf;
 }
 
 .status {
-    background-color: antiquewhite;
+    background-color: #1FD9FF;
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -25,13 +27,17 @@ body {
 }
 
 .btn {
-    background-color: antiquewhite;
+    background-color: white;
     color: black;
     border-color: black;
     border-radius: 10px;
     alignment: center;
 }
 
-#createBoard {
+input {
     border-radius: 10px;
+}
+
+board .row > div:nth-of-type(1) {
+    background-color: red;
 }
