@@ -61,7 +61,7 @@ let dom = {
         for (let i = 0; i < cards.length; i++) {
             let cardDiv = document.createElement('div');
             cardDiv.innerHTML = cards[i].title
-            cardDiv.dataset.order = cards.order
+            cardDiv.dataset.order = cards[i].order
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id)
             cardBox.appendChild(cardDiv);
         }
