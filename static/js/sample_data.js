@@ -27,6 +27,11 @@ let sampleData = {
             "id": 1,
             "title": "Sprint1",
             "is_active": true
+        },
+        {
+            "id": 2,
+            "title": "Teamwork",
+            "is_active": true
         }
     ],
     "cards": [
@@ -35,7 +40,7 @@ let sampleData = {
             "title": "Boards / List page",
             "board_id": 1,
             "status_id": 1,
-            "order": 3
+            "order": 1
         },
         {
             "id": 2,
@@ -49,22 +54,22 @@ let sampleData = {
             "title": "Cards / Order",
             "board_id": 1,
             "status_id": 1,
-            "order": 1
+            "order": 3
         },
         {
             "id": 4,
             "title": "Cards / Statuses",
             "board_id": 1,
             "status_id": 1,
-            "order": 3
+            "order": 4
         },
         {
             "id": 5,
             "title": "Cards / Edit title",
             "board_id": 1,
             "status_id": 1,
-            "order": 2
-        },
+            "order": 5
+        }
     ]
 };
 
