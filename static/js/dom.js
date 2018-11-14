@@ -26,38 +26,43 @@ let dom = {
         // retrieves cards and makes showCards called
         dataHandler.getCardsByBoardId(boardId, this.showCards)
     },
-    showCards: function (cards) {
+    showCards: function (cards, boardId) {
         // shows the cards of a board
-        let boardId = 'board' + cards[0].board_id;
         // it adds necessary event listeners also
-
-
+        let intBoardId = boardId;
+        boardId = "board" + boardId;
         //board.innerHTML = '';
-        let boardContent = document.createElement('div');
+        let boardContent;
+
         let board = document.getElementById(boardId);
-        if (document.getElementById('container' + cards[0].board_id)) {
-            document.getElementById('container' + cards[0].board_id).innerHTML = '';
+        if (document.getElementById('container' + intBoardId)) {
+            boardContent = document.getElementById('container' + intBoardId);
+            boardContent.innerHTML = '';
             console.log('yay');
         }
-        boardContent.id = 'container' + cards[0].board_id;
+        else {
+            boardContent = document.createElement('div');
+        }
+        boardContent.id = 'container' + intBoardId;
         boardContent.setAttribute('class', 'row');
         let statuses = ['New','In progress','Testing','Done'];
         for (let i = 0; i < statuses.length; i++) {
             let statusDiv = document.createElement('div');
             let cardContainer = document.createElement('div');
-            cardContainer.id = 'dragme' + cards[0].board_id +'_'+(i+1);
-            statusDiv.id = 'board' + cards[0].board_id + '_' +(i+1);
+            cardContainer.id = 'dragme' + intBoardId +'_'+(i+1);
+            statusDiv.id = 'board' + intBoardId + '_' +(i+1);
             statusDiv.setAttribute('class', 'col-lg-3 col-md-6 status');
             statusDiv.innerHTML = statuses[i];
             statusDiv.dataset.draggable = 'false';
             boardContent.appendChild(statusDiv);
             statusDiv.appendChild(cardContainer);
         }
+
         board.appendChild(boardContent);
-        dragula([document.getElementById('dragme'+cards[0].board_id+'_'+1),
-        document.getElementById('dragme'+cards[0].board_id+'_'+2),
-        document.getElementById('dragme'+cards[0].board_id+'_'+3),
-        document.getElementById('dragme'+cards[0].board_id+'_'+4)])
+        dragula([document.getElementById('dragme'+intBoardId+'_'+1),
+        document.getElementById('dragme'+intBoardId+'_'+2),
+        document.getElementById('dragme'+intBoardId+'_'+3),
+        document.getElementById('dragme'+intBoardId+'_'+4)]);
         for (let i = 0; i < cards.length; i++) {
             let cardDiv = document.createElement('div');
             cardDiv.innerHTML = cards[i].title

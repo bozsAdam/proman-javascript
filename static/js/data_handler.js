@@ -59,7 +59,7 @@ let dataHandler = {
             }
         }
         cards.sort((a,b)=>{return a.order - b.order});
-        callback(cards);
+        callback(cards, boardId);
     },
     getCard: function (cardId, callback) {
         // the card is retrieved and then the callback function is called with the card
