@@ -14,7 +14,14 @@
         <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     </head>
     <body>
-        <h1>ProMan</h1>
+        <div class = 'row'>
+            <div class = 'col-10'>
+                <h1>ProMan</h1>
+            </div>
+            <div class = 'col-2'>
+                <input id = 'createBoard'><input type = 'submit' id="boardSubmit">
+            </div>
+        </div>
         <div id="boards" class="container-fluid">Boards are loading...</div>
     </body>
 </html>

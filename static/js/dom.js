@@ -3,6 +3,7 @@ let dom = {
     loadBoards: function () {
         // retrieves boards and makes showBoards called
         dataHandler.getBoards(this.showBoards);
+        this.buttonEvent();
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
@@ -50,6 +51,8 @@ let dom = {
             let statusDiv = document.createElement('div');
             let cardContainer = document.createElement('div');
             cardContainer.id = 'dragme' + intBoardId +'_'+(i+1);
+            cardContainer.setAttribute('class','draggable col-12');
+            cardContainer.dataset.status = i;
             statusDiv.id = 'board' + intBoardId + '_' +(i+1);
             statusDiv.setAttribute('class', 'col-lg-3 col-md-6 status');
             statusDiv.innerHTML = statuses[i];
@@ -59,17 +62,17 @@ let dom = {
         }
 
         board.appendChild(boardContent);
-        dragula([document.getElementById('dragme'+intBoardId+'_'+1),
-        document.getElementById('dragme'+intBoardId+'_'+2),
-        document.getElementById('dragme'+intBoardId+'_'+3),
-        document.getElementById('dragme'+intBoardId+'_'+4)]);
         for (let i = 0; i < cards.length; i++) {
             let cardDiv = document.createElement('div');
-            cardDiv.innerHTML = cards[i].title
-            cardDiv.dataset.order = cards[i].order
+            cardDiv.innerHTML = cards[i].title;
+            cardDiv.dataset.order = cards[i].order;
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id)
             cardBox.appendChild(cardDiv);
         }
+            dragula([document.getElementById('dragme'+intBoardId+'_'+1),
+        document.getElementById('dragme'+intBoardId+'_'+2),
+        document.getElementById('dragme'+intBoardId+'_'+3),
+        document.getElementById('dragme'+intBoardId+'_'+4)]);
     },
     appendToElement: function (elementToExtend, textToAppend, prepend = false) {
         // function to append new DOM elements (represented by a string) to an existing DOM element
@@ -87,5 +90,13 @@ let dom = {
         return elementToExtend.lastChild;
     },
     // here comes more features
+    buttonEvent: function() {
+        let newBoardButton = document.getElementById('boardSubmit');
+        newBoardButton.addEventListener('click',()=>{
+            let title = document.getElementById('createBoard').value;
+            dataHandler.createNewBoard(title,this.showBoards)
+        })
+    }
+
 }
 ;

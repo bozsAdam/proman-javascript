@@ -13,3 +13,7 @@
     border-radius: 10px;
     border: 1px solid black;
 }
+.draggable{
+    min-height: 50%;
+    background-color: rebeccapurple;
+}
