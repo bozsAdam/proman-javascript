@@ -4,6 +4,12 @@ let dom = {
         // retrieves boards and makes showBoards called
         dataHandler.getBoards(this.showBoards);
         this.buttonEvent();
+        let testLink = document.getElementById('test');
+        testLink.addEventListener('click', function() {
+            fetch('http://127.0.0.1:5000/get-boards')
+                .then((response) => response.json())
+                .then((data) => {console.log(data)})
+        })
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
@@ -100,7 +106,6 @@ let dom = {
                 cardsOfContainer[i].dataset.order = i;
                 dataHandler.orderChange(cardsOfContainer[i].dataset.id,i)
             }
-            console.log(statusId,cardId,cardObject,cardsOfContainer);
         }
             );
                 },
