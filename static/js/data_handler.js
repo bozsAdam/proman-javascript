@@ -15,10 +15,10 @@ let dataHandler = {
     _saveData: function () {
         // it is not called from outside
         // saves the data from this._data to local storage
-        localStorage.setItem('proman-data', JSON.stringify(this._data));
+
     },
     init: function (callback) {
-        fetch(' http://127.0.0.1:5000/get-data')
+        fetch(' http://127.0.0.1:5000/get-data', {method: 'POST'})
             .then((response) => response.json())
             .then((data) => {
                 this._data = data;

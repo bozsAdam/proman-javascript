@@ -11,7 +11,7 @@ def boards():
     return render_template('boards.html')
 
 
-@app.route('/get-data')
+@app.route('/get-data', methods=['POST'])
 def get_boards():
     boards = connection.select_boards()
     cards = connection.select_cards()
