@@ -2,11 +2,12 @@
 let dom = {
     loadBoards: function () {
         // retrieves boards and makes showBoards called
-        dataHandler.getBoards(this.showBoards);
-        this.buttonEvent();
+        dataHandler.getBoards(dom.showBoards);
+        dom.buttonEvent();
+
         let testLink = document.getElementById('test');
         testLink.addEventListener('click', function() {
-            fetch('http://127.0.0.1:5000/get-boards')
+            fetch('http://127.0.0.1:5000/get-data')
                 .then((response) => response.json())
                 .then((data) => {console.log(data)})
         })

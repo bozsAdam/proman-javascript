@@ -17,12 +17,18 @@ let dataHandler = {
         // saves the data from this._data to local storage
         localStorage.setItem('proman-data', JSON.stringify(this._data));
     },
-    init: function () {
-        this._loadData();
+    init: function (callback) {
+        fetch(' http://127.0.0.1:5000/get-data')
+            .then((response) => response.json())
+            .then((data) => {
+                this._data = data;
+                callback();
+            })
     },
     getBoards: function (callback) {
         // the boards are retrieved and then the callback function is called with the boards
         let boards = this._data.boards;
+        console.log(boards);
         callback(boards);
     },
     getBoard: function (boardId, callback) {

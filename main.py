@@ -11,10 +11,13 @@ def boards():
     return render_template('boards.html')
 
 
-@app.route('/get-boards')
+@app.route('/get-data')
 def get_boards():
     boards = connection.select_boards()
-    return jsonify(boards=boards)
+    cards = connection.select_cards()
+    statuses = connection.select_statuses()
+    data = [boards, cards, statuses]
+    return jsonify(boards=boards, cards=cards, statuses=statuses)
 
 
 def main():
