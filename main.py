@@ -1,9 +1,11 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify,request
 import connection
+from flask_cors import CORS
+import data_manager
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/")
 def boards():
@@ -19,6 +21,15 @@ def get_boards():
     data = [boards, cards, statuses]
     return jsonify(boards=boards, cards=cards, statuses=statuses)
 
+
+@app.route('/save-data', methods=['POST'])
+def save_data():
+    data = request.get_json()['data']
+    boards = data['boards']
+    cards = data['cards']
+    data_manager.fill_boards(boards)
+    data_manager.fill_cards(cards)
+    return 'JUHU'
 
 def main():
     app.run(debug=False)

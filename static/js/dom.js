@@ -7,9 +7,7 @@ let dom = {
 
         let testLink = document.getElementById('test');
         testLink.addEventListener('click', function() {
-            fetch('http://127.0.0.1:5000/get-data')
-                .then((response) => response.json())
-                .then((data) => {console.log(data)})
+            dataHandler._saveData()
         })
     },
     showBoards: function (boards) {

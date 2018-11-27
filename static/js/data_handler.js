@@ -4,21 +4,22 @@
 // (watch out: when you would like to use a property/function of an object from the
 // object itself then you must use the 'this' keyword before. For example: 'this._data' below)
 let dataHandler = {
-    keyInLocalStorage: 'proman-data', // the string that you use as a key in localStorage to save your application data
-    _data: {}, // it contains the boards and their cards and statuses. It is not called from outside.
-    _loadData: function () {
-        // it is not called from outside
-        // loads data from local storage, parses it and put into this._data property
-        let localData = localStorage.getItem(this.keyInLocalStorage);
-        this._data = JSON.parse(localData);
-    },
     _saveData: function () {
-        // it is not called from outside
-        // saves the data from this._data to local storage
-
+        let body = JSON.stringify({'data':this._data});
+        fetch('http://127.0.0.1:5000/save-data',
+            {
+                method: 'POST',
+                body: body,
+                headers:{
+                    "Content-Type" : "application/json"
+                }
+            })
     },
     init: function (callback) {
-        fetch(' http://127.0.0.1:5000/get-data', {method: 'POST'})
+        fetch(' http://127.0.0.1:5000/get-data',
+            {
+                method: 'POST'
+            })
             .then((response) => response.json())
             .then((data) => {
                 this._data = data;
