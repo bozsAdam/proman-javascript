@@ -58,7 +58,12 @@ sequence|table|34321|34323|1
       <StateNumber>562</StateNumber>
       <Owner>postgres</Owner>
     </database>
-    <role id="11" parent="1" name="csilla">
+    <database id="11" parent="1" name="tv_shows">
+      <ObjectId>34341</ObjectId>
+      <StateNumber>2284</StateNumber>
+      <Owner>csilla</Owner>
+    </database>
+    <role id="12" parent="1" name="csilla">
       <ObjectId>16384</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -67,32 +72,32 @@ sequence|table|34321|34323|1
       <CanLogin>1</CanLogin>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="12" parent="1" name="pg_monitor">
+    <role id="13" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="13" parent="1" name="pg_read_all_settings">
+    <role id="14" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="14" parent="1" name="pg_read_all_stats">
+    <role id="15" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="15" parent="1" name="pg_signal_backend">
+    <role id="16" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="16" parent="1" name="pg_stat_scan_tables">
+    <role id="17" parent="1" name="pg_stat_scan_tables">
       <ObjectId>3377</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="17" parent="1" name="postgres">
+    <role id="18" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -103,44 +108,44 @@ sequence|table|34321|34323|1
       <ConnectionLimit>-1</ConnectionLimit>
       <BypassRls>1</BypassRls>
     </role>
-    <schema id="18" parent="9" name="information_schema">
+    <schema id="19" parent="9" name="information_schema">
       <ObjectId>12764</ObjectId>
       <StateNumber>353</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="19" parent="9" name="pg_catalog">
+    <schema id="20" parent="9" name="pg_catalog">
       <ObjectId>11</ObjectId>
       <Comment>system catalog schema</Comment>
       <StateNumber>350</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="20" parent="9" name="pg_temp_1">
+    <schema id="21" parent="9" name="pg_temp_1">
       <ObjectId>11736</ObjectId>
       <StateNumber>113</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="21" parent="9" name="pg_toast">
+    <schema id="22" parent="9" name="pg_toast">
       <ObjectId>99</ObjectId>
       <Comment>reserved schema for TOAST tables</Comment>
       <StateNumber>1</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="22" parent="9" name="pg_toast_temp_1">
+    <schema id="23" parent="9" name="pg_toast_temp_1">
       <ObjectId>11737</ObjectId>
       <StateNumber>113</StateNumber>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="23" parent="9" name="public">
+    <schema id="24" parent="9" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2018-11-26.13:58:30.140</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-11-28.10:51:49.012</IntrospectionTimestamp>
       <IntrospectionStateNumber>2264</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <access-method id="24" parent="9" name="btree">
+    <access-method id="25" parent="9" name="btree">
       <ObjectId>403</ObjectId>
       <Comment>b-tree index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -148,7 +153,7 @@ sequence|table|34321|34323|1
       <HandlerId>330</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="25" parent="9" name="hash">
+    <access-method id="26" parent="9" name="hash">
       <ObjectId>405</ObjectId>
       <Comment>hash index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -156,7 +161,7 @@ sequence|table|34321|34323|1
       <HandlerId>331</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="26" parent="9" name="gist">
+    <access-method id="27" parent="9" name="gist">
       <ObjectId>783</ObjectId>
       <Comment>GiST index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -164,7 +169,7 @@ sequence|table|34321|34323|1
       <HandlerId>332</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="27" parent="9" name="gin">
+    <access-method id="28" parent="9" name="gin">
       <ObjectId>2742</ObjectId>
       <Comment>GIN index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -172,7 +177,7 @@ sequence|table|34321|34323|1
       <HandlerId>333</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="28" parent="9" name="spgist">
+    <access-method id="29" parent="9" name="spgist">
       <ObjectId>4000</ObjectId>
       <Comment>SP-GiST index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -180,7 +185,7 @@ sequence|table|34321|34323|1
       <HandlerId>334</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="29" parent="9" name="brin">
+    <access-method id="30" parent="9" name="brin">
       <ObjectId>3580</ObjectId>
       <Comment>block range index (BRIN) access method</Comment>
       <StateNumber>1</StateNumber>
@@ -188,7 +193,7 @@ sequence|table|34321|34323|1
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
-    <extension id="30" parent="9" name="plpgsql">
+    <extension id="31" parent="9" name="plpgsql">
       <ObjectId>13041</ObjectId>
       <Comment>PL/pgSQL procedural language</Comment>
       <StateNumber>505</StateNumber>
@@ -196,7 +201,7 @@ sequence|table|34321|34323|1
       <SchemaName>pg_catalog</SchemaName>
       <SchemaId>11</SchemaId>
     </extension>
-    <sequence id="31" parent="23" name="boards_id_seq">
+    <sequence id="32" parent="24" name="boards_id_seq">
       <ObjectId>34293</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2253</StateNumber>
@@ -204,7 +209,7 @@ sequence|table|34321|34323|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="32" parent="23" name="cards_id_seq">
+    <sequence id="33" parent="24" name="cards_id_seq">
       <ObjectId>34299</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2254</StateNumber>
@@ -212,7 +217,7 @@ sequence|table|34321|34323|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="33" parent="23" name="statuses_id_seq">
+    <sequence id="34" parent="24" name="statuses_id_seq">
       <ObjectId>34287</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2252</StateNumber>
@@ -220,7 +225,7 @@ sequence|table|34321|34323|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="34" parent="23" name="users_id_seq">
+    <sequence id="35" parent="24" name="users_id_seq">
       <ObjectId>34321</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2260</StateNumber>
@@ -228,27 +233,27 @@ sequence|table|34321|34323|1
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <table id="35" parent="23" name="boards">
+    <table id="36" parent="24" name="boards">
       <ObjectId>34295</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2264</StateNumber>
     </table>
-    <table id="36" parent="23" name="cards">
+    <table id="37" parent="24" name="cards">
       <ObjectId>34301</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2259</StateNumber>
     </table>
-    <table id="37" parent="23" name="statuses">
+    <table id="38" parent="24" name="statuses">
       <ObjectId>34289</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2259</StateNumber>
     </table>
-    <table id="38" parent="23" name="users">
+    <table id="39" parent="24" name="users">
       <ObjectId>34323</ObjectId>
       <Owner>csilla</Owner>
       <StateNumber>2263</StateNumber>
     </table>
-    <column id="39" parent="35" name="id">
+    <column id="40" parent="36" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -256,38 +261,38 @@ sequence|table|34321|34323|1
       <DefaultExpression>nextval(&apos;boards_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="40" parent="35" name="title">
+    <column id="41" parent="36" name="title">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>2253</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="41" parent="35" name="is_active">
+    <column id="42" parent="36" name="is_active">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <StateNumber>2264</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="42" parent="35" name="user_id">
+    <column id="43" parent="36" name="user_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>2261</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="43" parent="35" name="pk_board_id">
+    <index id="44" parent="36" name="pk_board_id">
       <ObjectId>34307</ObjectId>
       <StateNumber>2264</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="44" parent="35" name="pk_board_id">
+    <key id="45" parent="36" name="pk_board_id">
       <ObjectId>34308</ObjectId>
       <StateNumber>2256</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>pk_board_id</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="45" parent="35" name="fk_board_id">
+    <foreign-key id="46" parent="36" name="fk_board_id">
       <ObjectId>34332</ObjectId>
       <StateNumber>2263</StateNumber>
       <ColNames>user_id</ColNames>
@@ -297,7 +302,7 @@ sequence|table|34321|34323|1
       <RefKeyName>pk_user_id</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="46" parent="36" name="id">
+    <column id="47" parent="37" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -305,44 +310,44 @@ sequence|table|34321|34323|1
       <DefaultExpression>nextval(&apos;cards_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="47" parent="36" name="title">
+    <column id="48" parent="37" name="title">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>2254</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="48" parent="36" name="board_id">
+    <column id="49" parent="37" name="board_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>2254</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="49" parent="36" name="status_id">
+    <column id="50" parent="37" name="status_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>2254</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="50" parent="36" name="card_order">
+    <column id="51" parent="37" name="card_order">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>2254</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="51" parent="36" name="pk_card_id">
+    <index id="52" parent="37" name="pk_card_id">
       <ObjectId>34309</ObjectId>
       <StateNumber>2257</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="52" parent="36" name="pk_card_id">
+    <key id="53" parent="37" name="pk_card_id">
       <ObjectId>34310</ObjectId>
       <StateNumber>2257</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>pk_card_id</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="53" parent="36" name="fk_card_id">
+    <foreign-key id="54" parent="37" name="fk_card_id">
       <ObjectId>34311</ObjectId>
       <StateNumber>2258</StateNumber>
       <ColNames>board_id</ColNames>
@@ -352,7 +357,7 @@ sequence|table|34321|34323|1
       <RefKeyName>pk_board_id</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="54" parent="36" name="fk_cards_id">
+    <foreign-key id="55" parent="37" name="fk_cards_id">
       <ObjectId>34316</ObjectId>
       <StateNumber>2259</StateNumber>
       <ColNames>status_id</ColNames>
@@ -362,7 +367,7 @@ sequence|table|34321|34323|1
       <RefKeyName>pk_status_id</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="55" parent="37" name="id">
+    <column id="56" parent="38" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -370,26 +375,26 @@ sequence|table|34321|34323|1
       <DefaultExpression>nextval(&apos;statuses_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="56" parent="37" name="name">
+    <column id="57" parent="38" name="name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <StateNumber>2252</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="57" parent="37" name="pk_status_id">
+    <index id="58" parent="38" name="pk_status_id">
       <ObjectId>34305</ObjectId>
       <StateNumber>2255</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="58" parent="37" name="pk_status_id">
+    <key id="59" parent="38" name="pk_status_id">
       <ObjectId>34306</ObjectId>
       <StateNumber>2255</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>pk_status_id</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="59" parent="38" name="id">
+    <column id="60" parent="39" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -397,25 +402,25 @@ sequence|table|34321|34323|1
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="60" parent="38" name="nick_name">
+    <column id="61" parent="39" name="nick_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>2260</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="61" parent="38" name="hashed_password">
+    <column id="62" parent="39" name="hashed_password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>2260</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="62" parent="38" name="pk_user_id">
+    <index id="63" parent="39" name="pk_user_id">
       <ObjectId>34330</ObjectId>
       <StateNumber>2262</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="63" parent="38" name="pk_user_id">
+    <key id="64" parent="39" name="pk_user_id">
       <ObjectId>34331</ObjectId>
       <StateNumber>2262</StateNumber>
       <ColNames>id</ColNames>

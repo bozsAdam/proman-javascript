@@ -27,9 +27,12 @@ def save_data():
     data = request.get_json()['data']
     boards = data['boards']
     cards = data['cards']
+    data_manager.delete()
     data_manager.fill_boards(boards)
     data_manager.fill_cards(cards)
-    return 'JUHU'
+    return ''
+
+
 
 def main():
     app.run(debug=False)

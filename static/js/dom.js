@@ -21,18 +21,26 @@ let dom = {
                 boardDiv.id = 'board' + boards[i].id;
                 boardDiv.setAttribute('class', 'col-12 board');
                 boardDiv.innerHTML = boards[i].title;
+
                 let input = document.createElement('input');
                 let button = document.createElement('input');
+                let delBtn = document.createElement("button");
                 input.id = 'createCard' + boards[i].id;
                 input.placeholder = 'Create new card';
                 button.id = 'createCardBtn' + boards[i].id;
                 button.type = 'submit';
+                delBtn.innerText = 'Delete Board';
+                delBtn.type = 'submit';
+                delBtn.setAttribute('class', 'btn btn-info');
                 button.setAttribute('class', 'btn btn-info');
                 button.addEventListener('click', function () {
                     dom.newCardEvent(boards[i].id);
                 });
+                delBtn.id = 'delete' + boards[i].id;
                 boardDiv.appendChild(input);
                 boardDiv.appendChild(button);
+                boardDiv.appendChild(delBtn);
+
                 boardDiv.addEventListener('click', function (event) {
                     if(event.target.parentElement.id === 'boards'){
                         dom.loadCards(boards[i].id);
@@ -85,7 +93,14 @@ let dom = {
             cardDiv.innerHTML = cards[i].title;
             cardDiv.dataset.order = cards[i].order;
             cardDiv.dataset.id = cards[i].id;
-            let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id)
+            let delCardBtn = document.createElement('button');
+            delCardBtn.innerText = 'DEL';
+            delCardBtn.setAttribute('class', 'btn btn-info');
+            delCardBtn.addEventListener('click',(event)=>{
+                dataHandler.deleteCardFromBoard(event.target.parentNode.dataset.id,dom.loadBoards)
+            });
+            cardDiv.appendChild(delCardBtn);
+            let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id);
             cardBox.appendChild(cardDiv);
         }
         let drake = dragula([document.getElementById('dragme'+intBoardId+'_'+1),
@@ -134,6 +149,10 @@ let dom = {
     newCardEvent: function(boardId) {
         let title = document.getElementById('createCard' + boardId).value;
         dataHandler.createNewCard(title,boardId,1,this.showCards)
+    },
+    deleteBoards: function () {
+        let boards = document.getElementById("boards")
+
     }
 }
 ;

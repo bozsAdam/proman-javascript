@@ -4,6 +4,7 @@
 // (watch out: when you would like to use a property/function of an object from the
 // object itself then you must use the 'this' keyword before. For example: 'this._data' below)
 let dataHandler = {
+    _data : {},
     _saveData: function () {
         let body = JSON.stringify({'data':this._data});
         fetch('http://127.0.0.1:5000/save-data',
@@ -80,10 +81,17 @@ let dataHandler = {
     },
     createNewBoard: function (boardTitle, callback) {
         // creates new board, saves it and calls the callback function with its data
+        let id;
+        if(this._data.boards.length ===0){
+            id = 0
+        }else{
+            id = Math.max(...this._data.boards.map(x => x.id)) + 1
+        }
         let newBoard = {
-            "id": Math.max(...this._data.boards.map(x => x.id)) + 1,
+            "id": id,
             "title": boardTitle,
-            "is_active": true
+            "is_active": true,
+            "user_id": 2
         };
         this._data.boards.push(newBoard);
         this._saveData();
@@ -91,13 +99,23 @@ let dataHandler = {
     },
     createNewCard: function (cardTitle, boardId, statusId, callback) {
         // creates new card, saves it and calls the callback function with its data
+        let order;
+        let id;
+        if(this._data.cards.length === 0){
+            order = 1;
+            id = 1
+        }else{
+            order = Math.max(...this._data.cards.map(x => x.card_order)) + 1;
+            id = Math.max(...this._data.cards.map(x => x.id)) + 1
+        }
         let newCard = {
-            "id": Math.max(...this._data.cards.map(x => x.id)) + 1,
+            "id": id,
             "title": cardTitle,
             "board_id": boardId,
             "status_id": statusId,
-            "order": Math.max(...this._data.cards.map(x => x.order)) + 1,
+            "card_order": order ,
         };
+        console.log(newCard);
         this._data.cards.push(newCard);
         this._saveData();
         let cardsForBoard = this._data.cards.filter((card)=>card.board_id === boardId);
@@ -115,7 +133,7 @@ let dataHandler = {
     },
     orderChange: function(cardId,order_id){
         let card = this._data.cards.filter(x=>x.id === parseInt(cardId));
-        card[0].order = order_id;
+        card[0].card_order = order_id;
         this._saveData()
     },
     deleteCard: function(cardId){
@@ -123,5 +141,10 @@ let dataHandler = {
         this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
         this._saveData();
         return card
+    },
+    deleteCardFromBoard: function(cardId,callback){
+        this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
+        this._saveData();
+        callback()
     }
 };

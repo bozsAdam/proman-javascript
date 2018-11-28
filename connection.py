@@ -55,3 +55,8 @@ def insert_to_cards(cursor,params):
                 VALUES(%(id)s,%(title)s,%(board_id)s,%(status_id)s,%(card_order)s) 
             """
     cursor.execute(query,params)
+
+
+
+
+
