@@ -5,10 +5,6 @@ let dom = {
         dataHandler.getBoards(dom.showBoards);
         dom.buttonEvent();
 
-        let testLink = document.getElementById('test');
-        testLink.addEventListener('click', function() {
-            dataHandler._saveData()
-        })
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
@@ -21,7 +17,6 @@ let dom = {
                 boardDiv.id = 'board' + boards[i].id;
                 boardDiv.setAttribute('class', 'col-12 board');
                 boardDiv.innerHTML = boards[i].title;
-
                 let input = document.createElement('input');
                 let button = document.createElement('input');
                 let delBtn = document.createElement("button");
@@ -101,6 +96,8 @@ let dom = {
             });
             cardDiv.appendChild(delCardBtn);
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id);
+            cardDiv.setAttribute('class', 'card')
+            let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id)
             cardBox.appendChild(cardDiv);
         }
         let drake = dragula([document.getElementById('dragme'+intBoardId+'_'+1),
