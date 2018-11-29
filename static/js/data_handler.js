@@ -143,5 +143,5 @@ let dataHandler = {
         this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
         this._saveData();
         callback()
-    }
+    },
 };

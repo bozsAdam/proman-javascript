@@ -150,9 +150,5 @@ let dom = {
         let title = document.getElementById('createCard' + boardId).value;
         dataHandler.createNewCard(title,boardId,1,this.showCards)
     },
-    deleteBoards: function () {
-        let boards = document.getElementById("boards")
-
-    }
 }
 ;
