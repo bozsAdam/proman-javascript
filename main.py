@@ -28,6 +28,7 @@ def save_data():
     boards = data['boards']
     cards = data['cards']
     data_manager.delete()
+    print(connection.select_boards())
     data_manager.fill_boards(boards)
     data_manager.fill_cards(cards)
     return ''

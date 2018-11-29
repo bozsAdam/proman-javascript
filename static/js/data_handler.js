@@ -30,7 +30,6 @@ let dataHandler = {
     getBoards: function (callback) {
         // the boards are retrieved and then the callback function is called with the boards
         let boards = this._data.boards;
-        console.log(boards);
         callback(boards);
     },
     getBoard: function (boardId, callback) {
@@ -91,7 +90,7 @@ let dataHandler = {
             "id": id,
             "title": boardTitle,
             "is_active": true,
-            "user_id": 2
+            "user_id": 1
         };
         this._data.boards.push(newBoard);
         this._saveData();
@@ -115,7 +114,6 @@ let dataHandler = {
             "status_id": statusId,
             "card_order": order ,
         };
-        console.log(newCard);
         this._data.cards.push(newCard);
         this._saveData();
         let cardsForBoard = this._data.cards.filter((card)=>card.board_id === boardId);
@@ -129,7 +127,7 @@ let dataHandler = {
     },
     addExistingCard: function(existingCard){
         this._data.cards.push(existingCard);
-        this._saveData();
+        console.log(existingCard);
     },
     orderChange: function(cardId,order_id){
         let card = this._data.cards.filter(x=>x.id === parseInt(cardId));
@@ -139,7 +137,6 @@ let dataHandler = {
     deleteCard: function(cardId){
         let card = this.getCardById(cardId);
         this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
-        this._saveData();
         return card
     },
     deleteCardFromBoard: function(cardId,callback){

@@ -57,6 +57,3 @@ def insert_to_cards(cursor,params):
     cursor.execute(query,params)
 
 
-
-
-
