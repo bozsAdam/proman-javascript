@@ -1,5 +1,5 @@
 :root {
-    --main-boardcolor: #13857E;
+    --main-boardcolor: rgba(19,133,126,0.4);
     --statuscolor: #D7DBDB;
     --button-bg-hover: #BD4F46;
 }
@@ -18,21 +18,22 @@ body {
     padding: 30px;
 }
 
-#boards {
 
-}
 
 .board {
     border-radius: 10px;
-    border: 2px solid black;
+    border: 1.5px solid black;
     padding: 20px;
     background-color: var(--main-boardcolor);
+    margin-bottom: 10px;
 }
 
 .status {
     background-color: var(--statuscolor);
     border-radius: 5px;
     border: 0.5px solid black;
+    opacity: 100%;
+    margin-top: 5px;
 }
 .draggable{
     min-height: 20px;
@@ -40,15 +41,17 @@ body {
 
 }
 
-.draggable div {
+.card {
     border: 1px solid black;
     text-align: center;
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 5px;
+    background: none;
+    touch-action: none;
 }
 
-.draggable div:hover {
+.card:hover {
     border-color: white;
     color: white;
 }
@@ -57,7 +60,7 @@ body {
 .btn {
     background-color: white;
     color: black;
-    border-color: black;
+    border-color: var(--button-bg-hover);
     border-radius: 10px;
     alignment: center;
 }
@@ -72,6 +75,12 @@ input {
     max-height: 40px;
 }
 
-board .row > div:nth-of-type(1) {
-    background-color: red;
+input:focus {
+    border-radius: 5px;
+}
+
+.gu-mirror, .gu-transit {
+    background-color: white;
+    color: black;
+    border-color: black;
 }

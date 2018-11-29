@@ -5,12 +5,6 @@ let dom = {
         dataHandler.getBoards(dom.showBoards);
         dom.buttonEvent();
 
-        let testLink = document.getElementById('test');
-        testLink.addEventListener('click', function() {
-            fetch('http://127.0.0.1:5000/get-data')
-                .then((response) => response.json())
-                .then((data) => {console.log(data)})
-        })
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
@@ -87,6 +81,7 @@ let dom = {
             cardDiv.innerHTML = cards[i].title;
             cardDiv.dataset.order = cards[i].order;
             cardDiv.dataset.id = cards[i].id;
+            cardDiv.setAttribute('class', 'card')
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id)
             cardBox.appendChild(cardDiv);
         }
