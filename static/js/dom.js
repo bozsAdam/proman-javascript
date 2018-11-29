@@ -6,10 +6,6 @@ let dom = {
         dataHandler.getBoards(userId,dom.showBoards);
         dom.buttonEvent();
 
-        let testLink = document.getElementById('test');
-        testLink.addEventListener('click', function() {
-            dataHandler._saveData()
-        })
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div
@@ -41,28 +37,28 @@ let dom = {
             boardDiv.appendChild(button);
             boardDiv.appendChild(delBtn);
 
-            boardDiv.addEventListener('click', function (event) {
-                if(event.target.parentElement.id === 'boards'){
-                    if(boards[i].is_active === 'true'){
-                        boardContent = document.getElementById('container' + parseInt(boards[i].id));
-                        boardContent.innerHTML = '';
-                        boards[i].is_active = 'false';
-                        dataHandler._saveData()
-                        }else{
-                        dom.loadCards(boards[i].id);
-                        boards[i].is_active = 'true';
-                        dataHandler._saveData()
+                boardDiv.addEventListener('click', function (event) {
+                    if (event.target.parentElement.id === 'boards') {
+                        if (boards[i].is_active === 'true') {
+                            boardContent = document.getElementById('container' + parseInt(boards[i].id));
+                            boardContent.innerHTML = '';
+                            boards[i].is_active = 'false';
+                            dataHandler._saveData()
+                        } else {
+                            dom.loadCards(boards[i].id);
+                            boards[i].is_active = 'true';
+                            dataHandler._saveData()
+                        }
                     }
+                });
+                boardsContainer.appendChild(boardDiv);
+                if (boards[i].is_active === 'true') {
+                    dom.loadCards(boards[i].id)
                 }
-            });
-            boardsContainer.appendChild(boardDiv);
-            if(boards[i].is_active === 'true'){
-                dom.loadCards(boards[i].id)
-                }
-            boardsContainer.appendChild(boardDiv);
-            delBtn.addEventListener('click', function() {
-                dataHandler.deleteBoardWithCards(boards[i].id,dom.showBoards)
-            })
+                boardsContainer.appendChild(boardDiv);
+                delBtn.addEventListener('click', function () {
+                    dataHandler.deleteBoardWithCards(boards[i].id, dom.showBoards)
+                })
             }
         }
     ,
@@ -110,12 +106,25 @@ let dom = {
             cardDiv.dataset.order = cards[i].order;
             cardDiv.dataset.id = cards[i].id;
             let delCardBtn = document.createElement('button');
-            delCardBtn.innerText = 'DEL';
-            delCardBtn.setAttribute('class', 'btn btn-info');
+            delCardBtn.innerText = 'X';
+            delCardBtn.dataset.open = 'no'
+            delCardBtn.setAttribute('class', 'btn btn-info del');
             delCardBtn.addEventListener('click',(event)=>{
                 dataHandler.deleteCardFromBoard(event.target.parentNode.dataset.id,dom.showBoards)
             });
             cardDiv.appendChild(delCardBtn);
+            cardDiv.setAttribute('class', 'card');
+            cardDiv.addEventListener('click', function (event) {
+                let del = event.target.children[0];
+                if (del.dataset.open === 'no') {
+                    del.style.display = 'block';
+                    del.dataset.open = 'yes';
+                } else {
+                    del.style.display = 'none';
+                    del.dataset.open = 'no';
+                }
+
+            });
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id);
             cardBox.appendChild(cardDiv);
         }
