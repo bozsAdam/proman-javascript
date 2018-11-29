@@ -47,6 +47,9 @@ let dom = {
                     }
                 });
                 boardsContainer.appendChild(boardDiv);
+                delBtn.addEventListener('click', function() {
+                    dataHandler.deleteBoardWithCards(boards[i].id,dom.showBoards)
+                })
             }
         }
     },
@@ -97,7 +100,7 @@ let dom = {
             delCardBtn.innerText = 'DEL';
             delCardBtn.setAttribute('class', 'btn btn-info');
             delCardBtn.addEventListener('click',(event)=>{
-                dataHandler.deleteCardFromBoard(event.target.parentNode.dataset.id,dom.loadBoards)
+                dataHandler.deleteCardFromBoard(event.target.parentNode.dataset.id,dom.showBoards)
             });
             cardDiv.appendChild(delCardBtn);
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id);

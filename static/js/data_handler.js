@@ -90,7 +90,7 @@ let dataHandler = {
             "id": id,
             "title": boardTitle,
             "is_active": true,
-            "user_id": 1
+            "user_id": 2
         };
         this._data.boards.push(newBoard);
         this._saveData();
@@ -142,6 +142,12 @@ let dataHandler = {
     deleteCardFromBoard: function(cardId,callback){
         this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
         this._saveData();
-        callback()
+        callback(this._data.boards)
     },
+    deleteBoardWithCards: function(boardId, callback) {
+        this._data.boards = this._data.boards.filter(board=>board.id !== parseInt(boardId));
+        this._data.cards = this._data.cards.filter(card=>card.board_id !== parseInt(boardId));
+        this._saveData();
+        callback(this._data.boards)
+    }
 };
