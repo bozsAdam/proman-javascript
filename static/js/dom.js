@@ -107,6 +107,7 @@ let dom = {
             let delCardBtn = document.createElement('button');
             delCardBtn.innerText = 'X';
             delCardBtn.dataset.open = 'no';
+            delCardBtn.style.display = 'none';
             delCardBtn.setAttribute('class', 'btn btn-info del');
             delCardBtn.addEventListener('click',(event)=>{
                 let userId = document.getElementById('userdata').dataset.userId;
@@ -123,7 +124,6 @@ let dom = {
                     del.style.display = 'none';
                     del.dataset.open = 'no';
                 }
-
             });
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id);
             cardBox.appendChild(cardDiv);
