@@ -107,10 +107,11 @@ let dom = {
             cardDiv.dataset.id = cards[i].id;
             let delCardBtn = document.createElement('button');
             delCardBtn.innerText = 'X';
-            delCardBtn.dataset.open = 'no'
+            delCardBtn.dataset.open = 'no';
             delCardBtn.setAttribute('class', 'btn btn-info del');
             delCardBtn.addEventListener('click',(event)=>{
-                dataHandler.deleteCardFromBoard(event.target.parentNode.dataset.id,dom.showBoards)
+                let userId = document.getElementById('userdata').dataset.userId;
+                dataHandler.deleteCardFromBoard(userId,event.target.parentNode.dataset.id,dom.showBoards)
             });
             cardDiv.appendChild(delCardBtn);
             cardDiv.setAttribute('class', 'card');

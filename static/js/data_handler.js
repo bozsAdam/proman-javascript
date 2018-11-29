@@ -139,10 +139,10 @@ let dataHandler = {
         this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
         return card
     },
-    deleteCardFromBoard: function(cardId,callback){
+    deleteCardFromBoard: function(userId,cardId,callback){
         this._data.cards = this._data.cards.filter(card=>card.id !== parseInt(cardId));
         this._saveData();
-        callback(this._data.boards)
+        callback(this._data.boards.filter((board)=>board.user_id === parseInt(userId)))
     },
     deleteBoardWithCards: function(boardId, callback) {
         this._data.boards = this._data.boards.filter(board=>board.id !== parseInt(boardId));
