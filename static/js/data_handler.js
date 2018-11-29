@@ -27,9 +27,9 @@ let dataHandler = {
                 callback();
             })
     },
-    getBoards: function (callback) {
+    getBoards: function (userId,callback) {
         // the boards are retrieved and then the callback function is called with the boards
-        let boards = this._data.boards;
+        let boards = this._data.boards.filter((board)=>board.user_id === parseInt(userId));
         callback(boards);
     },
     getBoard: function (boardId, callback) {
@@ -78,7 +78,7 @@ let dataHandler = {
         }
         callback(card);
     },
-    createNewBoard: function (boardTitle, callback) {
+    createNewBoard: function (boardTitle,userId, callback) {
         // creates new board, saves it and calls the callback function with its data
         let id;
         if(this._data.boards.length ===0){
@@ -90,11 +90,11 @@ let dataHandler = {
             "id": id,
             "title": boardTitle,
             "is_active": false,
-            "user_id": 1
+            "user_id": userId
         };
         this._data.boards.push(newBoard);
         this._saveData();
-        callback(this._data.boards);
+        callback(this._data.boards.filter((board)=>board.user_id === parseInt(userId)));
     },
     createNewCard: function (cardTitle, boardId, statusId, callback) {
         // creates new card, saves it and calls the callback function with its data

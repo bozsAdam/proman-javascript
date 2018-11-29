@@ -16,10 +16,14 @@
         <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     </head>
     <body>
+        <div id = 'userdata' data-username = {{ username }} data-user-id={{ userId }}></div>
         <div class = 'row header'>
             <div class = 'col-md-8'>
-                <p><a id='test'>ggg</a></p>
-                <h1>ProMan by PrObjects</h1>
+                <div class="row">
+                    <div class = 'col-6'><h1>ProMan by PrObjects</h1></div>
+                    <div class = 'col-4'><h4>Logged as: {{ username }}</h4></div>
+                    <div class = 'col-2'><a href = '{{ url_for("login") }}'>Logout</a></div>
+                </div>
             </div>
             <input id = 'createBoard' class="col-md-3" placeholder="Create new board">
             <input type = 'submit' id="boardSubmit" class="btn btn-info col-md-1">

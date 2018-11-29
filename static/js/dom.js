@@ -2,7 +2,8 @@
 let dom = {
     loadBoards: function () {
         // retrieves boards and makes showBoards called
-        dataHandler.getBoards(dom.showBoards);
+        userId = document.getElementById('userdata').dataset.userId;
+        dataHandler.getBoards(userId,dom.showBoards);
         dom.buttonEvent();
 
         let testLink = document.getElementById('test');
@@ -155,10 +156,11 @@ let dom = {
     },
     // here comes more features
     buttonEvent: function() {
+        let userId = document.getElementById('userdata').dataset.userId;
         let newBoardButton = document.getElementById('boardSubmit');
         newBoardButton.addEventListener('click',()=>{
             let title = document.getElementById('createBoard').value;
-            dataHandler.createNewBoard(title,this.showBoards)
+            dataHandler.createNewBoard(title,parseInt(userId),this.showBoards)
         })
     },
     newCardEvent: function(boardId) {
