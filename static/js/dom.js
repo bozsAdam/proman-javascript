@@ -105,13 +105,25 @@ let dom = {
             cardDiv.dataset.order = cards[i].order;
             cardDiv.dataset.id = cards[i].id;
             let delCardBtn = document.createElement('button');
-            delCardBtn.innerText = 'DEL';
-            delCardBtn.setAttribute('class', 'btn btn-info');
+            delCardBtn.innerText = 'X';
+            delCardBtn.dataset.open = 'no'
+            delCardBtn.setAttribute('class', 'btn btn-info del');
             delCardBtn.addEventListener('click',(event)=>{
                 dataHandler.deleteCardFromBoard(event.target.parentNode.dataset.id,dom.showBoards)
             });
             cardDiv.appendChild(delCardBtn);
-            cardDiv.setAttribute('class', 'card')
+            cardDiv.setAttribute('class', 'card');
+            cardDiv.addEventListener('click', function (event) {
+                let del = event.target.children[0];
+                if (del.dataset.open === 'no') {
+                    del.style.display = 'block';
+                    del.dataset.open = 'yes';
+                } else {
+                    del.style.display = 'none';
+                    del.dataset.open = 'no';
+                }
+
+            });
             let cardBox = document.getElementById('dragme'+cards[0].board_id +'_'+cards[i].status_id);
             cardBox.appendChild(cardDiv);
         }
