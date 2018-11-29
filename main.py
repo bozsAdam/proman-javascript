@@ -18,7 +18,6 @@ def get_boards():
     boards = connection.select_boards()
     cards = connection.select_cards()
     statuses = connection.select_statuses()
-    data = [boards, cards, statuses]
     return jsonify(boards=boards, cards=cards, statuses=statuses)
 
 
@@ -28,7 +27,6 @@ def save_data():
     boards = data['boards']
     cards = data['cards']
     data_manager.delete()
-    print(connection.select_boards())
     data_manager.fill_boards(boards)
     data_manager.fill_cards(cards)
     return ''
@@ -40,6 +38,5 @@ def main():
 
 
 if __name__ == '__main__':
-    print('hello')
     main()
 
