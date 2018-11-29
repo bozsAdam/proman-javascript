@@ -5,7 +5,6 @@ let dom = {
         userId = document.getElementById('userdata').dataset.userId;
         dataHandler.getBoards(userId,dom.showBoards);
         dom.buttonEvent();
-
     },
     showBoards: function (boards) {
         // shows boards appending them to #boards div

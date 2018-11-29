@@ -17,12 +17,12 @@
     </head>
     <body>
         <div id = 'userdata' data-username = {{ username }} data-user-id={{ userId }}></div>
-        <div class = 'row header'>
+        <div class = 'row header probject'>
             <div class = 'col-md-8'>
                 <div class="row">
-                    <div class = 'col-6'><h1>ProMan by PrObjects</h1></div>
+                    <div class = 'col-6'><h2>ProMan by PrObjects</h2></div>
                     <div class = 'col-4'><h4>Logged as: {{ username }}</h4></div>
-                    <div class = 'col-2'><a href = '{{ url_for("login") }}'>Logout</a></div>
+                    <div class = 'col-2'><a href = '{{ url_for("login") }}' class ='btn btn-info'>Logout</a></div>
                 </div>
             </div>
             <input id = 'createBoard' class="col-md-3" placeholder="Create new board">

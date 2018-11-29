@@ -84,3 +84,11 @@ input:focus {
     color: black;
     border-color: black;
 }
+.probject{
+    border-radius: 10px;
+    border: 1.5px solid black;
+    padding: 20px;
+    background-color: var(--main-boardcolor);
+    margin-bottom: 5%;
+    text-align: center;
+}
