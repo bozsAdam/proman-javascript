@@ -16,37 +16,47 @@ let dom = {
         let boardsContainer = document.getElementById('boards');
         boardsContainer.innerHTML = '';
         for (let i = 0; i < boards.length; i++) {
-            if (boards[i].is_active) {
-                let boardDiv = document.createElement('div');
-                boardDiv.id = 'board' + boards[i].id;
-                boardDiv.setAttribute('class', 'col-12 board');
-                boardDiv.innerHTML = boards[i].title;
+            let boardDiv = document.createElement('div');
+            boardDiv.id = 'board' + boards[i].id;
+            boardDiv.setAttribute('class', 'col-12 board');
+            boardDiv.innerHTML = boards[i].title;
 
-                let input = document.createElement('input');
-                let button = document.createElement('input');
-                let delBtn = document.createElement("button");
-                input.id = 'createCard' + boards[i].id;
-                input.placeholder = 'Create new card';
-                button.id = 'createCardBtn' + boards[i].id;
-                button.type = 'submit';
-                delBtn.innerText = 'Delete Board';
-                delBtn.type = 'submit';
-                delBtn.setAttribute('class', 'btn btn-info');
-                button.setAttribute('class', 'btn btn-info');
-                button.addEventListener('click', function () {
-                    dom.newCardEvent(boards[i].id);
-                });
-                delBtn.id = 'delete' + boards[i].id;
-                boardDiv.appendChild(input);
-                boardDiv.appendChild(button);
-                boardDiv.appendChild(delBtn);
+            let input = document.createElement('input');
+            let button = document.createElement('input');
+            let delBtn = document.createElement("button");
+            input.id = 'createCard' + boards[i].id;
+            input.placeholder = 'Create new card';
+            button.id = 'createCardBtn' + boards[i].id;
+            button.type = 'submit';
+            delBtn.innerText = 'Delete Board';
+            delBtn.type = 'submit';
+            delBtn.setAttribute('class', 'btn btn-info');
+            button.setAttribute('class', 'btn btn-info');
+            button.addEventListener('click', function () {
+                dom.newCardEvent(boards[i].id);
+            });
+            delBtn.id = 'delete' + boards[i].id;
+            boardDiv.appendChild(input);
+            boardDiv.appendChild(button);
+            boardDiv.appendChild(delBtn);
 
-                boardDiv.addEventListener('click', function (event) {
-                    if(event.target.parentElement.id === 'boards'){
+            boardDiv.addEventListener('click', function (event) {
+                if(event.target.parentElement.id === 'boards'){
+                    if(boards[i].is_active === 'true'){
+                        boardContent = document.getElementById('container' + parseInt(boards[i].id));
+                        boardContent.innerHTML = '';
+                        boards[i].is_active = 'false';
+                        dataHandler._saveData()
+                        }else{
                         dom.loadCards(boards[i].id);
+                        boards[i].is_active = 'true';
+                        dataHandler._saveData()
                     }
-                });
-                boardsContainer.appendChild(boardDiv);
+                }
+            });
+            boardsContainer.appendChild(boardDiv);
+            if(boards[i].is_active === 'true'){
+                dom.loadCards(boards[i].id)
             }
         }
     },
