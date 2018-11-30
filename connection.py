@@ -57,3 +57,50 @@ def insert_to_cards(cursor,params):
     cursor.execute(query,params)
 
 
+@database_common.connection_handler
+def insert_new_user(cursor,username,hashed_password):
+    query= """
+                INSERT INTO users(nick_name,hashed_password)
+                VALUES(%(username)s,%(hashed_password)s)
+            """
+    params={
+            'username':username,
+            'hashed_password':hashed_password
+            }
+    cursor.execute(query,params)
+
+
+@database_common.connection_handler
+def get_hashed_password_by_username(cursor,username):
+    query="""
+            SELECT hashed_password FROM users
+            WHERE nick_name = %(username)s    
+        """
+    params = {'username':username}
+    cursor.execute(query,params)
+    hashed_pwd = cursor.fetchone()
+    if hashed_pwd is not None:
+        return hashed_pwd['hashed_password']
+    else:
+        return ''
+
+
+@database_common.connection_handler
+def get_all_usernames(cursor):
+    query = """
+                SELECT nick_name FROM users
+            """
+    cursor.execute(query)
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def get_user_id_by_username(cursor,username):
+    query = """
+                SELECT id FROM users
+                WHERE nick_name = %(username)s
+            """
+    params = {'username':username}
+    cursor.execute(query,params)
+    id = cursor.fetchone()
+    return id['id']

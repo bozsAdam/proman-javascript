@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Incorrect</title>
+    <meta http-equiv="refresh" content="2;url={{ url_for('login') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_page.css') }}">
+</head>
+<body>
+    {% if error == 'taken' %}
+        <div class = 'center_me'>
+            <h1>USERNAME HAS ALREADY TAKEN</h1>
+            <h2>redirecting....</h2>
+        </div>
+    {% else %}
+        <div class = 'center_me'>
+            <h1>USERNAME OR PASSWORD INCORRECT</h1>
+            <h2>redirecting....</h2>
+        </div>
+    {% endif %}
+</body>
+</html>
