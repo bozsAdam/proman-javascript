@@ -90,7 +90,7 @@ let dataHandler = {
             "id": id,
             "title": boardTitle,
             "is_active": false,
-            "user_id": 1
+            "user_id": 2
         };
         this._data.boards.push(newBoard);
         this._saveData();
@@ -127,7 +127,6 @@ let dataHandler = {
     },
     addExistingCard: function(existingCard){
         this._data.cards.push(existingCard);
-        console.log(existingCard);
     },
     orderChange: function(cardId,order_id){
         let card = this._data.cards.filter(x=>x.id === parseInt(cardId));
