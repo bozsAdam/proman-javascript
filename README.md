@@ -1,4 +1,9 @@
-# python-with-web-proman
-This is the second exercise in the Python with Web module, see instructions in Canvas
+# Proman
+This is the second exercise in the Python with Web module. A trello like task manager written mostly in javascript.
 
-It is not mandatory but feel free to use the skeleton code which you find in this repo
+## Authors
+
+* **László Czellahó** [czella](https://github.com/czella)
+* **Csilla Urbán** [csillaurban](https://github.com/csillaurban)
+* **Ádám Bozsóki**  [bozsAdam](https://github.com/bozsAdam)
+
